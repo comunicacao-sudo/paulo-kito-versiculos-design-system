@@ -2,11 +2,21 @@
 
 Este repositório contém o Design System oficial da série “Versículo do Dia” do Paulo Kito.
 
-Você é responsável por utilizar este sistema para criar artes em escala para Instagram Stories.
+O sistema é responsável por:
+
+1. Pesquisar novos versículos.
+2. Validar os textos bíblicos.
+3. Impedir repetição de versículos já utilizados.
+4. Montar o lote mensal.
+5. Planejar as peças.
+6. Gerar as artes para Instagram Stories.
+7. Manter consistência visual entre todos os lotes.
+
+---
 
 # Objetivo principal
 
-O comportamento padrão deste projeto é gerar:
+O comportamento padrão deste projeto é gerar mensalmente:
 
 30 versículos diferentes
 =
@@ -27,124 +37,281 @@ Nunca interpretar “30 artes” como uma única imagem contendo 30 peças.
 
 ---
 
-# Fonte de verdade
+# Fonte de verdade do sistema
 
-Antes de qualquer geração, consulte obrigatoriamente:
-
-1. `design-system/visual-rules.md`
-2. `design-system/layout.md`
-3. `design-system/typography.md`
-4. `design-system/photography.md`
-5. `design-system/ctas.md`
-6. `content/verses.md`
-7. `content/cta-library.md`
-8. `prompts/master-prompt.md`
-9. `prompts/batch-generation.md`
-10. As imagens presentes em `references/`
-
-Todos esses arquivos fazem parte do sistema.
-
-Não ignore regras do repositório para improvisar uma nova direção visual.
-
----
-
-# Prioridade das instruções
-
-Em caso de dúvida, seguir esta ordem:
+Antes de executar qualquer produção, consultar obrigatoriamente:
 
 1. `CLAUDE.md`
-2. `prompts/batch-generation.md`
-3. `prompts/master-prompt.md`
-4. Arquivos de `design-system/`
-5. `content/`
-6. `references/`
+2. `content/used-verses.md`
+3. `content/verses.md`
+4. `content/cta-library.md`
+5. `design-system/visual-rules.md`
+6. `design-system/layout.md`
+7. `design-system/typography.md`
+8. `design-system/photography.md`
+9. `design-system/ctas.md`
+10. `prompts/master-prompt.md`
+11. `prompts/batch-generation.md`
+12. As imagens presentes em `references/`
 
-Se duas instruções entrarem em conflito, utilizar a de maior prioridade.
-
----
-
-# Formato padrão de produção
-
-Quando o usuário disser algo como:
-
-“Gere os Versículos do Dia”
-
-“Crie o lote de versículos”
-
-“Faça as artes dos versículos”
-
-e não especificar outra quantidade, interpretar como:
-
-30 artes individuais.
-
-Quando o usuário informar explicitamente outra quantidade, seguir a quantidade solicitada.
+Não ignorar essas regras para improvisar um novo sistema.
 
 ---
 
-# Regra absoluta de saída
+# Fonte bíblica oficial
 
-Para um lote padrão, o resultado final deve conter:
+Todos os versículos devem ser pesquisados e validados em:
 
-- 30 imagens
-- 30 arquivos separados
-- 30 versículos diferentes
-- 30 fundos diferentes
-- 1 versículo por imagem
-- 1 CTA por imagem
-- 1080 × 1920 px por arquivo
-- Proporção 9:16
-- PNG
+https://www.bible.com/pt
 
-É proibido substituir essa entrega por:
+Versão obrigatória:
 
-- Mosaico
-- Grid
-- Colagem
-- Prancha
-- Mockup com várias peças
-- Uma única imagem contendo os 30 versículos
-- Uma única imagem contendo miniaturas das artes
+NVI — Nova Versão Internacional
 
-Cada versículo corresponde a uma peça independente.
+Esta é a fonte definida pelo projeto para seleção e conferência dos versículos.
 
 ---
 
-# Texto bíblico
+# Regra absoluta sobre pesquisa bíblica
 
-Utilize somente os versículos disponibilizados em:
+Nunca selecionar um versículo apenas de memória.
+
+Nunca inventar um texto bíblico.
+
+Nunca completar um versículo de memória.
+
+Nunca misturar traduções.
+
+Nunca substituir a NVI por outra tradução.
+
+Nunca alterar o texto encontrado para fazê-lo caber melhor na arte.
+
+O fluxo correto é:
+
+PESQUISAR
+↓
+VALIDAR
+↓
+CHECAR DUPLICIDADE
+↓
+REGISTRAR NO LOTE
+↓
+PLANEJAR
+↓
+GERAR
+
+---
+
+# Histórico permanente
+
+O arquivo:
+
+`content/used-verses.md`
+
+é a memória permanente de versículos já utilizados.
+
+Ele deve ser consultado ANTES de qualquer nova seleção.
+
+Uma referência presente nesse arquivo está bloqueada para futuros lotes.
+
+Exemplo:
+
+Se:
+
+`Gálatas 6:9`
+
+já estiver no histórico, não utilizar novamente.
+
+A verificação deve ser feita principalmente pela referência bíblica, e não apenas pelo texto.
+
+---
+
+# Regra de não repetição
+
+Um novo lote não pode conter:
+
+- Referências já utilizadas anteriormente
+- Versículos duplicados dentro do próprio lote
+- O mesmo versículo em outra tradução
+- A mesma referência com outra formatação
+
+A regra de não repetição é permanente entre os meses.
+
+O objetivo é construir um histórico crescente de versículos utilizados.
+
+---
+
+# Fila mensal
+
+O arquivo:
 
 `content/verses.md`
 
-O texto fornecido deve ser tratado como conteúdo definitivo para a arte.
+representa exclusivamente o lote atual.
 
-Nunca:
+Antes da geração mensal, ele deve conter 30 versículos novos e validados.
 
-- Alterar palavras
-- Resumir
-- Parafrasear
-- Completar
-- Reescrever
-- Remover trechos
-- Alterar pontuação
-- Alterar referência
-- Alterar versão bíblica
+Cada registro deve possuir:
 
-Se houver inconsistência no conteúdo, sinalize antes de gerar aquela peça.
-
-Nunca invente um versículo para completar um lote.
+- ID
+- Referência
+- Versão
+- Texto
+- Tema
+- Tamanho
+- Status
 
 ---
 
-# Estrutura obrigatória da arte
+# Processo mensal obrigatório
+
+Quando o usuário solicitar um novo lote de “Versículos do Dia”:
+
+## ETAPA 1 — Consultar histórico
+
+Leia:
+
+`content/used-verses.md`
+
+Identifique todas as referências já utilizadas.
+
+---
+
+## ETAPA 2 — Pesquisar novos versículos
+
+Pesquise novos versículos em:
+
+https://www.bible.com/pt
+
+Utilize somente:
+
+NVI — Nova Versão Internacional
+
+Selecione 30 referências que ainda não aparecem no histórico.
+
+---
+
+## ETAPA 3 — Validar
+
+Para cada versículo:
+
+1. Confirme a referência.
+2. Confirme que a tradução é NVI.
+3. Confirme o texto.
+4. Confirme a pontuação.
+5. Compare com `content/used-verses.md`.
+6. Confirme que não existe duplicidade dentro do lote.
+
+---
+
+## ETAPA 4 — Garantir variedade
+
+O conjunto de 30 versículos deve possuir variedade temática.
+
+Buscar equilíbrio entre temas como:
+
+- Fé
+- Perseverança
+- Esperança
+- Confiança
+- Sabedoria
+- Propósito
+- Coragem
+- Disciplina
+- Família
+- Amor
+- Liderança
+- Humildade
+- Trabalho
+- Direção
+- Paciência
+- Paz
+- Gratidão
+- Força
+- Promessas
+- Dependência de Deus
+
+Evitar selecionar 30 versículos com mensagens praticamente iguais.
+
+---
+
+## ETAPA 5 — Variar comprimento
+
+Buscar aproximadamente:
+
+- 10 versículos curtos
+- 10 versículos médios
+- 10 versículos longos
+
+Essa distribuição não precisa ser matematicamente exata.
+
+Ela existe para produzir variedade visual no mês.
+
+---
+
+## ETAPA 6 — Preencher o lote
+
+Registrar os 30 versículos selecionados em:
+
+`content/verses.md`
+
+Todos devem começar com:
+
+`Status: pendente`
+
+Não iniciar a geração das imagens antes de completar e validar esta etapa.
+
+---
+
+## ETAPA 7 — Planejar as artes
+
+Antes de gerar imagens, planejar individualmente as 30 peças.
+
+Para cada uma, definir:
+
+- ID
+- Referência
+- Tema
+- Comprimento
+- Conceito fotográfico
+- Cenário
+- Iluminação
+- Composição
+- CTA
+- Nome do arquivo
+
+O planejamento deve garantir variedade entre as 30 peças.
+
+---
+
+## ETAPA 8 — Gerar
+
+Gerar:
+
+30 arquivos PNG individuais.
+
+Cada arquivo deve possuir:
+
+- 1080 × 1920 px
+- Proporção 9:16
+- 1 versículo
+- 1 fundo fotográfico exclusivo
+- 1 CTA
+
+Nunca criar mosaico, grid ou colagem.
+
+---
+
+# Estrutura obrigatória de cada arte
 
 Cada peça deve conter:
 
 1. “Versículo do Dia”
-2. Referência bíblica + versão
+2. Referência bíblica + NVI
 3. Texto completo do versículo
 4. CTA de interação
 
-O versículo é o elemento principal.
+O versículo é sempre o elemento principal.
 
 A CTA é secundária.
 
@@ -175,7 +342,7 @@ A estética deve ser:
 
 # Fotografia
 
-Cada peça utiliza uma fotografia de fundo ocupando 100% do canvas.
+Cada peça deve utilizar um fundo fotográfico diferente.
 
 Priorizar:
 
@@ -198,55 +365,48 @@ A fotografia deve possuir espaço negativo suficiente para aplicação do texto.
 
 ---
 
-# Regra de variedade
+# Regra dos fundos
 
-Em um lote de 30:
+Dentro de um lote de 30:
 
 - Não repetir fotografia
 - Não reutilizar o mesmo fundo
 - Não utilizar apenas reenquadramentos da mesma imagem
-- Evitar cenários excessivamente semelhantes
+- Variar cenário
 - Variar iluminação
-- Variar enquadramento
 - Variar perspectiva
 - Variar horário do dia
-- Variar paisagem
 - Variar composição
 
-Ao mesmo tempo, todas as imagens precisam parecer parte da mesma coleção.
-
-Variedade não significa abandonar a identidade.
+Todas as peças, porém, precisam continuar pertencendo à mesma identidade visual.
 
 ---
 
 # Referências visuais
 
-As imagens em:
+As imagens presentes em:
 
 `references/`
 
-são referências oficiais.
+são referências oficiais do projeto.
 
-Analise:
+Utilizá-las para compreender:
 
 - Composição
 - Hierarquia
 - Fotografia
 - Respiro
 - Contraste
-- Escala
 - Tipografia
 - Atmosfera
 
-Não copie literalmente uma referência.
-
-Use-as para compreender a linguagem visual esperada.
+Não copiar literalmente as referências.
 
 ---
 
 # Tipografia
 
-Utilizar duas linguagens tipográficas:
+Utilizar:
 
 ## Sans serif
 
@@ -262,9 +422,7 @@ Para:
 
 - Texto principal do versículo
 
-O versículo deve possuir aparência editorial e elegante.
-
-Todo o conteúdo deve permanecer alinhado à esquerda.
+Todo conteúdo deve permanecer alinhado à esquerda.
 
 Priorizar texto branco.
 
@@ -278,99 +436,126 @@ Consultar:
 
 `content/cta-library.md`
 
-A CTA deve ser escolhida de acordo com o significado do versículo.
-
-Exemplos:
-
-- Se você crê, escreva: Amém.
-- Recebe essa palavra? Responda: Amém.
-- Essa palavra falou com você hoje?
-- Declare: eu creio.
-- Digite: eu confio.
-- Envie para alguém que precisa ler isso.
-
-Não repetir automaticamente “Amém” nas 30 peças.
+Selecionar a CTA de acordo com o significado do versículo.
 
 Não repetir a mesma CTA em peças consecutivas.
 
----
-
-# Planejamento antes da geração
-
-Antes de gerar um lote, planeje as peças.
-
-Para cada versículo determine:
-
-- ID
-- Referência
-- Tema
-- Comprimento
-- Conceito fotográfico
-- Cenário
-- Iluminação
-- Composição
-- CTA
-- Nome do arquivo
-
-Verifique a variedade do conjunto antes de iniciar a geração.
+Não utilizar “Amém” automaticamente nas 30 peças.
 
 ---
 
-# Controle de qualidade
+# Regra absoluta de saída
 
-Antes de finalizar cada arte, confira:
+Para o lote mensal padrão, entregar:
 
-- Texto correto
-- Referência correta
-- Versão correta
-- Nenhuma palavra faltando
-- Nenhuma palavra alterada
-- Boa quebra de linhas
-- Alta legibilidade
-- Fundo coerente
-- CTA coerente
-- Hierarquia correta
-- Respeito às margens
-- Consistência com as referências
+- 30 imagens
+- 30 arquivos separados
+- 30 versículos diferentes
+- 30 fundos diferentes
+- 30 CTAs coerentes
+- 1 versículo por arquivo
+- 1080 × 1920 px
+- Proporção 9:16
+- PNG
+
+Nunca substituir por:
+
+- Mosaico
+- Grid
+- Colagem
+- Prancha
+- Mockup
+- Uma única imagem contendo várias peças
 
 ---
 
-# Arquivos
+# Nome dos arquivos
 
-Utilizar o padrão:
+Utilizar:
 
 `versiculo-ID-referencia.png`
 
 Exemplo:
 
-`versiculo-001-galatas-6-9.png`
+`versiculo-001-salmos-23-4.png`
 
-Novas gerações devem ser destinadas inicialmente a:
+Regras:
+
+- Letras minúsculas
+- Sem acentos
+- Sem espaços
+- Hífens como separadores
+
+---
+
+# Destino
+
+Novas gerações:
 
 `output/drafts/`
 
-Peças aprovadas podem posteriormente ser movidas para:
+Após aprovação humana:
 
 `output/approved/`
+
+Nenhuma peça deve ser considerada automaticamente aprovada.
+
+---
+
+# Atualização do histórico
+
+IMPORTANTE:
+
+Gerar uma arte não significa que o versículo já foi utilizado.
+
+Somente depois da aprovação/publicação do lote os versículos devem ser adicionados a:
+
+`content/used-verses.md`
+
+Isso evita bloquear versículos de peças rejeitadas ou descartadas.
+
+---
+
+# Controle de qualidade
+
+Antes de finalizar cada peça, conferir:
+
+- Texto exatamente igual à fonte validada
+- Referência correta
+- NVI confirmada
+- Nenhuma palavra faltando
+- Nenhuma palavra alterada
+- Boa legibilidade
+- Boa quebra de linhas
+- Fundo exclusivo
+- CTA coerente
+- Hierarquia correta
+- Consistência visual
 
 ---
 
 # Regra final
 
-A missão deste sistema não é gerar apenas imagens bonitas.
+O sistema deve funcionar continuamente mês após mês.
 
-A missão é criar uma série reconhecível e consistente de “Versículo do Dia” do Paulo Kito em escala.
+A cada novo lote:
 
-O resultado padrão esperado é:
+HISTÓRICO
+↓
+PESQUISA
+↓
+30 NOVOS VERSÍCULOS
+↓
+VALIDAÇÃO NVI
+↓
+PLANEJAMENTO
+↓
+30 FUNDOS DIFERENTES
+↓
+30 ARTES
+↓
+APROVAÇÃO
+↓
+ATUALIZAÇÃO DO HISTÓRICO
 
-30 versículos diferentes.
-
-30 fundos diferentes.
-
-30 artes individuais.
-
-30 arquivos PNG separados.
-
-Todos em 1080 × 1920 px.
-
-Todos seguindo o mesmo Design System.
+O resultado deve ser uma biblioteca crescente de conteúdos sem repetição de versículos e com identidade visual consistente.
