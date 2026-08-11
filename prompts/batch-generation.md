@@ -1,10 +1,10 @@
 # Batch Generation — Versículo do Dia
 
-Este arquivo define o processo oficial de geração em lote da série “Versículo do Dia” do Paulo Kito.
+Este arquivo define o processo oficial de geração mensal da série “Versículo do Dia” do Paulo Kito.
 
-# Objetivo principal
+# Objetivo
 
-O formato padrão de produção deste projeto é:
+Gerar um lote completo de:
 
 30 versículos diferentes
 =
@@ -12,564 +12,526 @@ O formato padrão de produção deste projeto é:
 =
 30 arquivos PNG separados
 =
-30 fundos diferentes.
+30 fundos fotográficos diferentes.
 
-Todas as peças devem ser produzidas em:
+Todas as peças devem ser:
 
 - 1080 × 1920 px
 - Proporção 9:16
-- Formato vertical
+- Verticais
 - Prontas para Instagram Stories
 
-Nunca gerar as 30 peças dentro de uma única imagem.
+---
+
+# Fluxo obrigatório
+
+A geração mensal deve seguir exatamente esta ordem:
+
+1. Consultar histórico
+2. Pesquisar novos versículos
+3. Validar NVI
+4. Checar duplicidade
+5. Montar lote
+6. Planejar artes
+7. Gerar imagens
+8. Revisar
+9. Entregar drafts
+10. Atualizar histórico somente após aprovação/publicação
+
+Não pular etapas.
 
 ---
 
-# Instrução principal
+# Etapa 1 — Consultar histórico
 
-Antes de iniciar qualquer lote, leia obrigatoriamente:
+Antes de pesquisar qualquer versículo, abrir:
 
-1. `CLAUDE.md`
-2. `design-system/visual-rules.md`
-3. `design-system/layout.md`
-4. `design-system/typography.md`
-5. `design-system/photography.md`
-6. `design-system/ctas.md`
-7. `content/verses.md`
-8. `content/cta-library.md`
-9. `prompts/master-prompt.md`
-10. As imagens disponíveis em `references/`
+`content/used-verses.md`
 
-Esses arquivos e referências formam o Design System oficial.
+Identificar todas as referências já utilizadas.
 
-Não improvise uma identidade diferente.
+Essas referências ficam bloqueadas para novos lotes.
+
+A comparação deve ser feita principalmente pela referência bíblica.
+
+Exemplo:
+
+Se `Gálatas 6:9` já estiver no histórico, ele não pode ser utilizado novamente.
 
 ---
 
-# Quantidade padrão
+# Etapa 2 — Pesquisar novos versículos
 
-Quando o usuário solicitar:
+Pesquisar novos versículos exclusivamente em:
 
-“Gere os Versículos do Dia”
+https://www.bible.com/pt
 
-ou
+Versão obrigatória:
 
-“Gere o lote de versículos”
+NVI — Nova Versão Internacional
 
-o padrão esperado é:
+Nunca selecionar versículos apenas de memória.
 
-30 artes individuais.
+Nunca inventar texto bíblico.
 
-Quando uma quantidade diferente for explicitamente solicitada, siga a quantidade informada pelo usuário.
+Nunca completar texto bíblico por conta própria.
 
----
-
-# Regra absoluta de entrega
-
-Para um lote padrão, entregar exatamente:
-
-- 30 arquivos de imagem separados
-- 30 versículos diferentes
-- 30 referências bíblicas correspondentes
-- 30 fundos diferentes
-- 1 versículo por imagem
-- 1 CTA por imagem
-- 1080 × 1920 px por imagem
-- Proporção 9:16 por imagem
-- Formato PNG
-
-Nunca entregar:
-
-- Mosaico com várias artes
-- Grid
-- Colagem
-- Prancha de apresentação
-- Uma imagem contendo vários versículos
-- Uma imagem contendo miniaturas das 30 peças
-
-Cada versículo deve gerar um arquivo independente.
+Nunca utilizar outra tradução.
 
 ---
 
-# Seleção dos versículos
+# Etapa 3 — Selecionar 30 versículos
 
-Utilize os versículos disponíveis em:
+Selecionar 30 referências que:
+
+- estejam disponíveis em NVI;
+- não apareçam em `content/used-verses.md`;
+- não se repitam dentro do próprio lote;
+- tenham mensagens adequadas para a série;
+- ofereçam variedade temática e visual.
+
+Se o usuário solicitar explicitamente outra quantidade, respeitar a quantidade informada.
+
+Caso contrário, o padrão é 30.
+
+---
+
+# Etapa 4 — Validar cada versículo
+
+Para cada referência:
+
+1. Confirmar que está no Bible.com.
+2. Confirmar que a versão é NVI.
+3. Conferir o texto completo.
+4. Conferir a pontuação.
+5. Conferir a referência.
+6. Verificar se não está no histórico.
+7. Verificar se não está duplicado no lote.
+
+Não alterar o texto para fazê-lo caber melhor na arte.
+
+---
+
+# Etapa 5 — Garantir variedade temática
+
+O lote não deve parecer uma sequência de mensagens repetidas.
+
+Buscar variedade entre temas como:
+
+- Fé
+- Perseverança
+- Esperança
+- Confiança
+- Sabedoria
+- Propósito
+- Coragem
+- Disciplina
+- Família
+- Amor
+- Liderança
+- Humildade
+- Trabalho
+- Direção
+- Paciência
+- Paz
+- Gratidão
+- Força
+- Promessas
+- Dependência de Deus
+
+Evitar concentração excessiva em um único tema.
+
+---
+
+# Etapa 6 — Garantir variedade de comprimento
+
+Buscar aproximadamente:
+
+- 10 versículos curtos
+- 10 versículos médios
+- 10 versículos longos
+
+Referência:
+
+Curto:
+até aproximadamente 20 palavras.
+
+Médio:
+aproximadamente 21 a 40 palavras.
+
+Longo:
+acima de aproximadamente 40 palavras.
+
+A proporção é uma referência, não uma regra rígida.
+
+---
+
+# Etapa 7 — Preencher a fila atual
+
+Depois de pesquisar e validar, preencher:
 
 `content/verses.md`
 
-Para o lote padrão:
+Cada registro deve conter:
 
-1. Localize os versículos com `Status: pendente`.
-2. Selecione os 30 primeiros.
-3. Respeite a ordem dos IDs.
-4. Não repita versículos.
-5. Não repita referências.
-6. Não pule um ID sem justificativa.
+- ID
+- Referência
+- Versão: NVI
+- Texto
+- Tema
+- Tamanho
+- Status: pendente
 
-Antes de iniciar a geração, confirme que existem pelo menos 30 versículos pendentes.
+Os IDs devem seguir a ordem:
 
-Se houver menos de 30:
+001
+002
+003
+...
+030
 
-- Não invente versículos.
-- Não complete o lote por conta própria.
-- Informe quantos versículos estão disponíveis.
-- Aguarde novos conteúdos antes de produzir o lote completo.
-
----
-
-# Integridade do texto bíblico
-
-O texto presente em `content/verses.md` é a fonte oficial para produção.
-
-Nunca:
-
-- Reescrever
-- Resumir
-- Parafrasear
-- Corrigir por conta própria
-- Completar
-- Remover trechos
-- Trocar palavras
-- Alterar pontuação
-- Alterar referência
-- Alterar versão bíblica
-
-A arte deve reproduzir exatamente o conteúdo fornecido.
-
-Se houver dúvida ou inconsistência, interrompa aquela peça e sinalize o problema.
+Não iniciar geração de imagens antes da fila estar completa e validada.
 
 ---
 
-# Processo obrigatório antes da geração
+# Etapa 8 — Planejamento visual
 
-Antes de gerar qualquer imagem, crie internamente o planejamento das 30 peças.
+Antes de gerar qualquer imagem, criar o planejamento das peças.
 
-Para cada uma, determine:
+Para cada ID, definir:
 
-1. ID
-2. Referência
-3. Versão
-4. Texto
-5. Tema central
-6. Classificação de comprimento
-7. Conceito fotográfico
-8. Tipo de cenário
-9. Iluminação
-10. Composição
-11. CTA
-12. Nome do arquivo
+- Referência
+- Tema
+- Comprimento
+- Conceito fotográfico
+- Tipo de cenário
+- Enquadramento
+- Iluminação
+- Posição do bloco de texto
+- CTA
+- Nome do arquivo
 
-Somente depois de verificar que não existem repetições inadequadas, inicie a geração das imagens.
+Verificar a variedade do conjunto antes da geração.
 
 ---
 
-# Classificação dos versículos
+# Etapa 9 — Regra dos fundos
 
-## Curto
+Cada arte deve utilizar um fundo diferente.
 
-Até aproximadamente 20 palavras.
+Dentro de um lote:
 
-Tratamento:
+- Não repetir fotografia
+- Não reutilizar o mesmo fundo
+- Não utilizar apenas reenquadramentos da mesma imagem
+- Não gerar fundos praticamente idênticos
 
-- Tipografia maior
-- Mais espaço negativo
-- Composição mais aberta
-
-## Médio
-
-Entre aproximadamente 21 e 40 palavras.
-
-Tratamento:
-
-- Tipografia intermediária
-- Equilíbrio entre texto e fotografia
-
-## Longo
-
-Acima de aproximadamente 40 palavras.
-
-Tratamento:
-
-- Tipografia proporcionalmente menor
-- Mais área disponível para texto
-- Alta prioridade para legibilidade
-
-Nunca cortar o versículo para fazê-lo caber.
-
----
-
-# Regra dos 30 fundos
-
-Cada uma das 30 peças deve utilizar um fundo diferente.
-
-É proibido reutilizar a mesma fotografia dentro do lote.
-
-Também deve ser evitada a sensação de que a mesma imagem foi apenas reenquadrada ou modificada.
-
-Variar intencionalmente:
+Variar:
 
 - Cenário
-- Local
-- Enquadramento
 - Perspectiva
-- Profundidade
 - Distância
 - Iluminação
 - Horário do dia
 - Clima
-- Textura natural
-- Elementos da paisagem
-- Distribuição do espaço negativo
+- Profundidade
+- Elementos naturais
+- Espaço negativo
 
 ---
 
 # Biblioteca de cenários
 
-Distribuir os fundos entre possibilidades como:
+Variar entre possibilidades como:
 
 - Montanhas com neve
 - Montanhas rochosas
-- Vale com névoa
-- Pico ao amanhecer
-- Estrada entre montanhas
-- Estrada no horizonte
-- Trilha
-- Campo aberto
-- Campo ao entardecer
-- Mar
-- Oceano visto de um penhasco
-- Lago
-- Lago entre montanhas
-- Deserto
-- Dunas
-- Penhascos
-- Floresta vista à distância
-- Horizonte amplo
-- Céu dramático
-- Céu em blue hour
+- Vales
+- Névoa
 - Amanhecer
 - Entardecer
-- Raios atravessando nuvens
-- Paisagem com neblina
-- Silhueta humana pequena diante da paisagem
+- Estradas
+- Trilhas
+- Horizonte
+- Mar
+- Lago
+- Penhascos
+- Deserto
+- Dunas
+- Campos
+- Céu dramático
+- Blue hour
+- Raios entre nuvens
+- Floresta ao longe
+- Silhueta humana pequena
+- Paisagem ampla
 
-A lista serve como direção, não como obrigação mecânica.
+Não usar a lista mecanicamente.
 
-O significado do versículo deve orientar a escolha.
+A mensagem do versículo deve orientar a escolha.
 
 ---
 
-# Relação entre versículo e fundo
+# Etapa 10 — Relação entre versículo e imagem
 
-A fotografia deve conversar conceitualmente com a mensagem.
+A imagem deve conversar de forma conceitual com a mensagem.
 
 Exemplos:
 
 Perseverança:
-- Montanha
-- Subida
-- Estrada
-- Trilha
+- montanha
+- subida
+- trilha
+- estrada
 
 Esperança:
-- Amanhecer
-- Horizonte
-- Luz surgindo entre nuvens
+- amanhecer
+- horizonte
+- luz entre nuvens
 
 Paz:
-- Lago
-- Mar calmo
-- Céu suave
+- lago
+- mar calmo
+- céu suave
 
 Direção:
-- Estrada
-- Caminho
-- Horizonte
+- estrada
+- caminho
+- horizonte
 
 Força:
-- Montanha
-- Penhasco
-- Paisagem grandiosa
+- montanha
+- penhasco
+- paisagem grandiosa
 
 Confiança:
-- Horizonte amplo
-- Caminho
-- Paisagem estável
+- horizonte amplo
+- caminho
+- paisagem estável
 
-Amor:
-- Luz quente
-- Horizonte
-- Paisagem acolhedora
+A relação deve ser sutil.
 
-A associação deve ser sutil.
-
-Não transformar o versículo em uma representação literal ou religiosa clichê.
+Evitar representação religiosa clichê.
 
 ---
 
-# Consistência visual
+# Etapa 11 — CTA
 
-As 30 artes precisam parecer parte da mesma coleção.
-
-Manter em todas:
-
-- Mesma lógica visual
-- Mesma hierarquia
-- Mesmas famílias tipográficas
-- Mesmo alinhamento à esquerda
-- Mesma linguagem fotográfica
-- Mesmo padrão de margens
-- Mesmo tratamento sofisticado
-- Mesma lógica de CTA
-- Mesma estética sóbria e premium
-
-A consistência deve vir do sistema, não da repetição das imagens.
-
----
-
-# Variação de composição
-
-Não posicionar todos os versículos exatamente no mesmo ponto.
-
-A posição vertical do bloco pode variar conforme a fotografia.
-
-Pode utilizar:
-
-- Região médio-superior
-- Região central
-- Região médio-inferior
-
-Sempre respeitando as áreas seguras do Instagram e as regras de `design-system/layout.md`.
-
-Todo o conteúdo permanece alinhado à esquerda.
-
----
-
-# CTAs em lote
-
-Cada peça deve conter uma CTA.
+Cada peça deve possuir uma CTA.
 
 Consultar:
 
 `content/cta-library.md`
 
-A CTA deve ser coerente com a mensagem específica do versículo.
+Selecionar a CTA de acordo com o significado do versículo.
 
-Alternar de forma natural entre:
+Alternar naturalmente entre:
 
 - Fé
 - Identificação
 - Declaração
 - Compartilhamento
 
-Exemplos:
+Não repetir a mesma CTA em peças consecutivas.
 
-- Se você crê, escreva: Amém.
-- Recebe essa palavra? Responda: Amém.
-- Essa palavra falou com você hoje?
-- Declare: eu creio.
-- Digite: eu confio.
-- Envie para alguém que precisa ler isso.
+Evitar repetição excessiva no mesmo lote.
+
+Não usar “Amém” automaticamente nas 30 artes.
 
 ---
 
-# Regra de repetição das CTAs
+# Etapa 12 — Gerar as artes
 
-Nunca utilizar a mesma CTA em peças consecutivas.
-
-Evitar repetir uma CTA dentro do mesmo lote sempre que houver outra opção coerente.
-
-Não colocar “Amém” automaticamente nas 30 peças.
-
-O objetivo é estimular interação sem transformar a série em conteúdo repetitivo ou apelativo.
-
----
-
-# Hierarquia de cada arte
+Gerar uma arte independente para cada versículo.
 
 Cada arquivo deve conter:
 
 1. “Versículo do Dia”
-2. Referência bíblica + versão
+2. Referência bíblica + NVI
 3. Texto completo do versículo
 4. CTA
 
-O versículo é sempre o elemento visual mais importante.
+Formato obrigatório:
 
-A CTA é sempre secundária.
+- PNG
+- 1080 × 1920 px
+- 9:16
+- 1 versículo por arquivo
+
+---
+
+# Regra absoluta de entrega
+
+Nunca criar:
+
+- mosaico;
+- grid;
+- colagem;
+- prancha;
+- mockup com várias peças;
+- uma única imagem contendo vários versículos.
+
+Um lote de 30 deve resultar em:
+
+30 arquivos PNG independentes.
 
 ---
 
 # Referências visuais
 
-Consultar obrigatoriamente as imagens da pasta:
+Consultar obrigatoriamente:
 
 `references/`
 
-Elas representam a direção visual aprovada.
+As referências devem orientar:
 
-Observar principalmente:
+- fotografia;
+- composição;
+- hierarquia;
+- tipografia;
+- respiro;
+- contraste;
+- atmosfera.
 
-- Fotografia
-- Respiro
-- Escala tipográfica
-- Hierarquia
-- Alinhamento
-- Simplicidade
-- Contraste
-- Atmosfera
-
-Não copiar literalmente as referências.
-
-Criar novas peças dentro da mesma linguagem visual.
+Não copiar literalmente.
 
 ---
 
-# Controle de repetição
+# Consistência
 
-Antes de finalizar o lote, verificar:
+As 30 peças devem parecer parte da mesma coleção.
 
-- Existem 30 versículos diferentes?
-- Existem 30 fundos diferentes?
-- Alguma fotografia foi repetida?
-- Existem fundos visualmente quase idênticos?
-- Alguma CTA está excessivamente repetida?
-- As composições possuem alguma variação?
-- Todas ainda parecem pertencer à mesma coleção?
+Manter:
 
-Corrigir repetições antes da entrega.
+- famílias tipográficas;
+- hierarquia;
+- alinhamento;
+- margens;
+- linguagem fotográfica;
+- tom;
+- estética premium e sóbria.
+
+Variar:
+
+- fundo;
+- enquadramento;
+- posição vertical;
+- quebra de linhas;
+- CTA;
+- cenário.
 
 ---
 
 # Nome dos arquivos
 
-Utilizar:
+Usar:
 
 `versiculo-ID-referencia.png`
 
 Exemplos:
 
-`versiculo-001-galatas-6-9.png`
+`versiculo-001-salmos-23-4.png`
 
-`versiculo-002-1-joao-4-16.png`
-
-`versiculo-003-salmos-23-4.png`
+`versiculo-002-proverbios-3-5.png`
 
 Regras:
 
-- Letras minúsculas
-- Sem acentos
-- Sem espaços
-- Usar hífens
-- Manter o ID correspondente ao `content/verses.md`
+- letras minúsculas;
+- sem acentos;
+- sem espaços;
+- usar hífens.
 
 ---
 
 # Destino dos arquivos
 
-Toda geração nova deve ser salva inicialmente em:
+Salvar inicialmente em:
 
 `output/drafts/`
 
-Depois de aprovação humana, os arquivos poderão ser movidos para:
+Somente depois da aprovação humana poderão ser movidos para:
 
 `output/approved/`
 
-Não considerar uma peça automaticamente aprovada.
+---
+
+# Atualização do histórico
+
+IMPORTANTE:
+
+Não adicionar automaticamente os versículos ao histórico apenas porque a arte foi gerada.
+
+Somente depois da aprovação/publicação do lote:
+
+1. adicionar as referências a `content/used-verses.md`;
+2. registrar o mês ou data;
+3. marcar como utilizado.
+
+Isso impede que peças rejeitadas bloqueiem versículos futuros.
 
 ---
 
 # Revisão individual
 
-Antes de finalizar cada imagem, verificar:
+Antes de finalizar cada arte, verificar:
 
-- O texto está exatamente correto?
-- A referência está correta?
-- A versão está correta?
-- O texto está completo?
-- Existe algum erro ortográfico introduzido na arte?
-- A quebra de linhas está adequada?
-- A leitura está confortável?
-- A fotografia possui espaço suficiente?
-- A CTA está correta?
-- A hierarquia segue o Design System?
-
-Se qualquer resposta for “não”, corrigir antes de finalizar.
+- texto correto;
+- referência correta;
+- NVI confirmada;
+- nenhuma palavra alterada;
+- nenhuma palavra faltando;
+- boa legibilidade;
+- boa quebra de linhas;
+- fundo exclusivo;
+- CTA coerente;
+- hierarquia correta;
+- identidade consistente.
 
 ---
 
 # Revisão final do lote
 
-Antes de entregar o lote, confirmar:
+Antes de entregar:
 
-- 30 imagens foram geradas
-- 30 arquivos são independentes
-- Todas possuem 1080 × 1920 px
-- Todas estão em proporção 9:16
-- Todas estão em PNG
-- Existem 30 versículos diferentes
-- Existem 30 fundos diferentes
-- Nenhum versículo foi alterado
-- Nenhuma referência foi alterada
-- Nenhuma arte está cortada
-- Todas possuem CTA
-- Não há repetição visual excessiva
-- A identidade é consistente
-
-O lote só está concluído quando todos os critérios forem atendidos.
+- confirmar quantidade correta;
+- confirmar arquivos independentes;
+- confirmar 1080 × 1920;
+- confirmar 9:16;
+- confirmar PNG;
+- confirmar versículos diferentes;
+- confirmar fundos diferentes;
+- confirmar ausência de duplicidade histórica;
+- confirmar CTAs coerentes;
+- confirmar consistência visual.
 
 ---
 
-# Relatório final
+# Comando padrão
 
-Após a geração, apresentar:
+Quando o usuário disser:
 
-## Lote gerado — 30 Versículos do Dia
+“Gere os Versículos do Dia”
 
-### 001
-Referência:
-Tema:
-CTA:
-Conceito visual:
-Arquivo:
-Status: draft
+interpretar como:
 
-### 002
-Referência:
-Tema:
-CTA:
-Conceito visual:
-Arquivo:
-Status: draft
+“Consulte `content/used-verses.md`.
 
-Continuar até a peça 030.
+Pesquise 30 novos versículos exclusivamente no Bible.com, sempre na versão NVI.
 
----
+Garanta que nenhuma referência já utilizada apareça novamente.
 
-# Comando padrão de produção
+Valide os 30 textos.
 
-Quando solicitado a executar o lote completo, interpretar o pedido da seguinte forma:
+Preencha `content/verses.md`.
 
-“Leia integralmente o Design System deste repositório.
+Planeje 30 artes com fundos diferentes.
 
-Utilize os próximos 30 versículos com status `pendente` em `content/verses.md`.
+Gere 30 arquivos PNG individuais em 1080 × 1920, proporção 9:16, prontos para Instagram Stories.
 
-Gere 30 artes INDIVIDUAIS.
+Inclua uma CTA coerente em cada peça.
 
-Cada arte deve ser um arquivo PNG separado em 1080 × 1920 px, proporção 9:16, pronto para Instagram Stories.
+Siga integralmente o Design System e as referências visuais.
 
-Use exatamente um versículo diferente por peça.
+Salve em `output/drafts/`.
 
-Utilize um fundo fotográfico diferente para cada uma das 30 artes.
-
-Não crie mosaico, grid, colagem ou imagem contendo várias peças.
-
-Siga integralmente as referências visuais e todos os arquivos do Design System.
-
-Escolha uma CTA coerente para cada versículo.
-
-Não altere nenhuma palavra dos textos bíblicos fornecidos.
-
-Salve os 30 arquivos em `output/drafts/`.
-
-Ao final, faça a revisão de qualidade e apresente o relatório das 30 peças.”
+Não atualize `content/used-verses.md` antes da aprovação/publicação.”
